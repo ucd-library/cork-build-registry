@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/ucd-library/dams",
+
+  "dependencies": {
+    "fin": "https://github.com/ucd-library/fin",
+    "media-utils": "https://github.com/ucd-library/ucdlib-media-utils"
+  },
+
+  "builds": {
+    "sandbox" : {
+      "fin" : "sandbox",
+      "media-utils" : "main"
+    },
+    "2.3.0" : {
+      "fin" : "2.8.0",
+      "media-utils" : "main"
+    },
+    "2.2.0" : {
+      "fin" : "2.7.0",
+      "media-utils" : "main"
+    }
+  }
+}

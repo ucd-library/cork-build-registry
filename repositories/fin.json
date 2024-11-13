@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/ucd-library/fin",
+
+  "dependencies": {
+    "init": "https://github.com/ucd-library/ucdlib-service-init"
+  },
+
+  "builds": {
+    "*" : {
+      "init" : "1.0.0"
+    }
+  }
+}

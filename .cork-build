@@ -1,0 +1,9 @@
+{
+  "registry" : "gcr.io/ucdlib-pubreg",
+
+  "images" : {
+    "cork-build-n-deploy" : {
+      "contextPath" : "gcloud"
+    }
+  }
+}

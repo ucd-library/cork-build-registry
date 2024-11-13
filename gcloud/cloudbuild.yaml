@@ -1,0 +1,88 @@
+steps:
+
+  # - name: 'gcr.io/cloud-builders/gsutil'
+  #   args: ['rsync', 'gs://${_CONFIG_BUCKET}/${_CONFIG_PROJECT}', '/config']
+  #   volumes:
+  #   - name: 'config'
+  #     path: '/config'
+
+  # - name: 'gcr.io/$PROJECT_ID/ci-buildnum'
+  #   args: ['/config/buildnum', '/config/.buildenv']
+  #   volumes:
+  #   - name: 'config'
+  #     path: '/config'
+
+  # - name: 'gcr.io/cloud-builders/gsutil'
+  #   args: ['cp', '/config/buildnum', 'gs://${_CONFIG_BUCKET}/${_CONFIG_PROJECT}/buildnum']
+  #   volumes:
+  #   - name: 'config'
+  #     path: '/config'
+
+  - name: gcr.io/ucdlib-pubreg/cork-build-n-deploy
+    entrypoint: "bash"
+    args: ["-c", "cork-kube build exec -p ${_PROJECT} -v ${_VERSION}"]
+    env: 
+      - '_CONFIG_BUCKET=$_CONFIG_BUCKET'
+      - '_PROJECT=$_PROJECT'
+      - '_VERSION=$_VERSION'
+
+  # - name: gcr.io/cloud-builders/docker
+  #   entrypoint: "bash"
+  #   args: ["-c", "./cmds/build.sh ${_ENV}"]
+  #   env: 
+  #     - 'GCLOUD_BUILD=true'
+  #     - 'BRANCH_NAME=$BRANCH_NAME'
+  #     - 'SHORT_SHA=$SHORT_SHA'
+  #     - 'TAG_NAME=$TAG_NAME'
+  #   volumes:
+  #   - name: 'config'
+  #     path: '/config'
+
+  # - name: 'gcr.io/cloud-builders/git'
+  #   secretEnv: ['SANDBOX_SSH_KEY', 'SANDBOX_KNOWN_HOSTS']
+  #   entrypoint: 'bash'
+  #   args:
+  #   - -c
+  #   - |
+  #     echo "$$SANDBOX_SSH_KEY" >> /root/.ssh/gcb
+  #     chmod 400 /root/.ssh/gcb
+  #     echo "$$SANDBOX_KNOWN_HOSTS" >> /root/.ssh/known_hosts
+  #   volumes:
+  #   - name: 'ssh'
+  #     path: /root/.ssh
+
+  # - name: 'gcr.io/cloud-builders/git'
+  #   entrypoint: "bash"
+  #   args: ["-c", "./gcloud/deploy.sh"]
+  #   volumes:
+  #   - name: 'ssh'
+  #     path: /root/.ssh
+  #   env: 
+  #     - 'REPO_NAME=$REPO_NAME'
+  #     - 'BRANCH_NAME=$BRANCH_NAME'
+  #     - 'SHORT_SHA=$SHORT_SHA'
+  #     - 'TAG_NAME=$TAG_NAME'
+  #     - 'PROJECT_BUILD_BUCKET=$_CONFIG_BUCKET'
+  #     - 'PROJECT_ID=$_CONFIG_PROJECT'
+
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   entrypoint: "bash"
+  #   args: ["-c", "./gcloud/deploy-image-utils.sh"]
+  #   volumes:
+  #   - name: 'ssh'
+  #     path: /root/.ssh
+  #   env: 
+  #     - 'REPO_NAME=$REPO_NAME'
+  #     - 'BRANCH_NAME=$BRANCH_NAME'
+  #     - 'SHORT_SHA=$SHORT_SHA'
+  #     - 'TAG_NAME=$TAG_NAME'
+  #     - 'PROJECT_BUILD_BUCKET=$_CONFIG_BUCKET'
+  #     - 'PROJECT_ID=$_CONFIG_PROJECT'
+  
+
+substitutions:
+  _CONFIG_BUCKET: ci-build-config
+  _PROJECT: dams
+  _ENV: ''
+
+timeout: 3200s
