@@ -1,5 +1,5 @@
 {
-  "registry" : "gcr.io/ucdlib-pubreg",
+  "registry" : "us-west1-docker.pkg.dev/digital-ucdavis-edu/pub",
 
   "images" : {
     "cork-build-n-deploy" : {
