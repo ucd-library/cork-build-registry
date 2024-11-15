@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/ucd-library/pg-farm",
+
+  "builds": {
+    "main" : {},
+    "sandbox" : {}
+  }
+}
