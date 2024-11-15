@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/ucd-library/client-error-reporter",
+
+  "builds": {
+    "main" : {}
+  }
+}
