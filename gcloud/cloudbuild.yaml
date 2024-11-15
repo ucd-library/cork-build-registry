@@ -7,10 +7,12 @@ steps:
       - '_CONFIG_BUCKET=$_CONFIG_BUCKET'
       - '_PROJECT=$_PROJECT'
       - '_VERSION=$_VERSION'
+      - 'CORK_BUILD_USE_CACHE=$_CORK_BUILD_USE_CACHE'
 
 substitutions:
   _CONFIG_BUCKET: ci-build-config
   _PROJECT: ''
   _VERSION: ''
+  _CORK_BUILD_USE_CACHE: 'true'
 
 timeout: 3200s
