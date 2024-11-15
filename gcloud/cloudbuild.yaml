@@ -2,7 +2,7 @@ steps:
 
   - name: gcr.io/ucdlib-pubreg/cork-build-n-deploy:main
     entrypoint: "bash"
-    args: ["-c", "cork-kube build exec --production -p ${_PROJECT} -v ${_VERSION}"]
+    args: ["-c", "cork-kube build exec --increment-build-number --production -p ${_PROJECT} -v ${_VERSION}"]
     env: 
       - '_CONFIG_BUCKET=$_CONFIG_BUCKET'
       - '_PROJECT=$_PROJECT'
