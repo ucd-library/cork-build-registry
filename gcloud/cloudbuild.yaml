@@ -1,6 +1,6 @@
 steps:
 
-  - name: gcr.io/ucdlib-pubreg/cork-build-n-deploy:main
+  - name: us-west1-docker.pkg.dev/digital-ucdavis-edu/pub:main
     entrypoint: "bash"
     args: ["-c", "cork-kube build exec --increment-build-number --production -p ${_PROJECT} -v ${_VERSION}"]
     env: 
