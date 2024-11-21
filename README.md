@@ -5,6 +5,11 @@ Contents
 - [Overview](#overview)
 - [Repository Definition File](#repository-definition-file)
 - [Cork Build (.cork-build) Configuration File](#cork-build-configuration-file)
+- [Overview of using CLI](#overview-of-using-cli)
+  - [Install cork-kube CLI](#install-cork-kube-cli)
+  - [List projects](#list-projects)
+  - [Build a project](#build-a-project)
+  - [Local Development](#local-development)
 
 ## Overview
 
@@ -13,6 +18,8 @@ Each file in the `registry` directory defines; the supported versions of a proje
 `Versions` of a project are defined by a git tag or branch.  The git tag/branch will be used to when tagging the build docker image.
 
 To summarize, this registry defines; the `supported versions` of a project, the `build dependency` between two projects.  While the projects git repository defines `how` to build the project, given a specific version and build dependencies.
+
+ℹ️ You can view an [introduction slide deck here](https://docs.google.com/presentation/d/1uq4Fu-GPu22Bf5Vw15uXI2dKOjacZ_GsMFWdBVWXVFQ)
 
 ## Repository Definition File
 
@@ -149,3 +156,83 @@ FROM ${INIT_BASE}
 ```
 
 Where the fin init image is using the passed in images as the base images.
+
+## Overview of using CLI
+
+### Install cork-kube CLI
+
+```bash
+npm install -g @ucd-lib/cork-kube
+```
+
+### List projects
+
+List all projects and all versions in the registry
+
+```bash
+cork-kube build list
+```
+
+Just list projects
+
+```bash
+cork-kube build list --projects
+```
+
+Just show specific project versions
+
+```bash
+cork-kube build list --project [my-project]
+```
+
+Show all images for a project
+
+```bash
+cork-kube build list --project [my-project] --images
+```
+
+### Build a project
+
+```bash 
+cork-kube build exec --project [my-project] --version [my-version]
+```
+
+Use the `--dry-run` flag to see what will be built without actually building the images.
+
+Or you can build production images in the cloud using 
+
+```bash
+cork-kube build gcb --project [my-project] --version [my-version]
+```
+
+### Local Development
+
+You can register a local copy of a repository to use instead of the remote repository. 
+
+```bash
+cork-kube build register-local-repo [path-to-repo]
+```
+
+Or list your registered local repos
+
+```bash
+cork-kube build show-local-repos
+```
+
+Now these repos will ALWAYS be used instead of fresh clones from GitHub.  However, if you want to test with remote code and you have registered a local repo, you can use the `--use-remote` flag.  This is useful when building a project that has a dependency on another project that you have registered locally.  Ex: building DAMS but with a remote copy of `fin` even though you have a local copy of `fin` registered.
+
+```bash
+cork-kube build exec --project [my-project] --version [my-version] --use-remote [remote-project]
+```
+
+If you want to test updates to the `cork-build-registry` without commiting, you can set the registry location to the current directory.  First clone the `cork-build-registry` repo, then run:
+
+```bash
+cork-kube build set-registry-location [path-to-cork-build-registry]
+```
+
+Now you can test build/version changes to the registry locally without push to remote.  Just remember to set the registry location back to the original location when you are done.
+
+```bash
+cork-kube build reset-registry-location
+```
