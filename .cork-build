@@ -4,6 +4,9 @@
   "images" : {
     "cork-build-n-deploy" : {
       "contextPath" : "gcloud"
+    },
+    "cork-build-registry-webapp" : {
+      "contextPath" : "webapp"
     }
   }
 }
