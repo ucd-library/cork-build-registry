@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/postgres",
+
+  "dependencies": {},
+
+  "builds": {
+    "16" : {}
+  }
+}
