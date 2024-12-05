@@ -15,4 +15,7 @@ substitutions:
   _VERSION: ''
   _USE_CACHE: 'true'
 
+options:
+  machineType: 'N1_HIGHCPU_8'
+
 timeout: 6400s
