@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/fuseki-image",
+
+  "dependencies": {},
+
+  "builds": {
+    "1.0.1" : {}
+  }
+}
