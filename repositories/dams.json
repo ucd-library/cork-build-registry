@@ -26,6 +26,10 @@
     "2.3.3" : {
       "fin" : "2.8.1",
       "media-utils" : "main"
+    },
+    "2.3.4" : {
+      "fin" : "2.8.2",
+      "media-utils" : "main"
     }
   }
 }
