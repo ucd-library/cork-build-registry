@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/ucd-library/aggie-experts",
+
+  "dependencies": {
+    "fuseki":"https://github.com/ucd-library/fuseki-image",
+    "fin": "https://github.com/ucd-library/fin"
+  },
+
+  "builds": {
+    "dev" : {
+      "fuseki":"1.0.1",
+      "fin":"2.6.3"
+    },
+    "3.0.2" : {
+      "fuseki":"1.0.1",
+      "fin":"2.6.3"
+    }
+  }
+}
