@@ -1,10 +1,12 @@
 import fetch from "node-fetch";
+import jwt from 'jsonwebtoken';
 import config from "./config";
 
 class Github {
 
   constructor() {
     this.UPDATE_PROPS = ["name", "content", "user", "version", "action", "sha"];
+    this.cachedAccessToken = null;
   }
 
   fetch(url, opts={}) {
@@ -36,7 +38,8 @@ class Github {
         sha : opts.sha
       }),
       headers : {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        Authorization : await this.getAuthorizationHeader()
       }
     });
     if( resp.status > 299 ) throw new Error(`Failed to update project file: ${resp.statusText}`);
@@ -55,7 +58,8 @@ class Github {
         branch : "main"
       }),
       headers : {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        Authorization : await this.getAuthorizationHeader()
       }
     });
     if( resp.status > 299 ) throw new Error(`Failed to update project file: ${resp.statusText}`);
@@ -66,6 +70,50 @@ class Github {
     let content = Buffer.from(response.content, "base64").toString();
     return JSON.parse(content);
   }
+
+  generateJwt() {
+    let payload = {
+      iat: Math.floor(Date.now() / 1000) - 60,
+      exp: Math.floor(Date.now() / 1000) + (60*9),
+      iss: config.github.app.id
+    };
+    return jwt.sign(payload, config.github.app.privateKey, { algorithm: 'RS256' });
+  }
+
+  async getAuthorizationHeader() {
+    let accessToken = await this.getAccessToken();
+    return `token ${accessToken}`;
+  }
+
+  async getAccessToken() {
+    if( this.cachedAccessToken ) {
+      return this.cachedAccessToken;
+    }
+
+    let jwt = this.generateJwt();
+
+    let resp = await fetch(`${config.github.apiBaseUrl}/app/installations/${config.github.app.installationId}/access_tokens`, {
+      method : "POST",
+      headers : {
+        "Accept" : "application/vnd.github+json",
+        "Authorization" : `Bearer ${jwt}`,
+        "X-GitHub-Api-Version" : "2022-11-28"
+      }
+    });
+    if( resp.status !== 201 ) throw new Error(`Failed to get access token: ${resp.statusText}`);
+    let json = await resp.json();
+
+
+    this.cachedAccessToken = json.token;
+    setTimeout(() => {
+      this.cachedAccessToken = null;
+    }, (json.expires_in - 60) * 1000);
+
+    return json.token;
+  }
+
+  // jwt: https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-json-web-token-jwt-for-a-github-app
+  // access token: https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app
 
 }
 

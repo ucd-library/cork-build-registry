@@ -1,0 +1,14 @@
+
+services:
+
+  webapp:
+    build: .
+    command: node index.js
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    env:
+      - GITHUB_REGISTRY_REPO=cork-build-registry-test
+    volumes:
+      - ./cert.pem:/etc/github/private-key.pem
