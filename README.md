@@ -13,7 +13,7 @@ Contents
 
 ## Overview
 
-Each file in the `registry` directory defines; the supported versions of a project, the build dependency between two projects.   Projects are simply GitHub code repositories that have one or more Dockerfiles as well as a `.cork-build` configuration file in the root of the repository.
+Each file in the `repositories` directory defines; the supported versions of a project, the build dependency between two projects.   Projects are simply GitHub code repositories that have one or more Dockerfiles as well as a `.cork-build` configuration file in the root of the repository.
 
 `Versions` of a project are defined by a git tag or branch.  The git tag/branch will be used to when tagging the build docker image.
 
