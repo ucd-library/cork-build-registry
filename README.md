@@ -64,6 +64,54 @@ To test changes before commit, you can
  - run `cork-kube build set-registry-location .`
  - the you can run `cork build exec --project [my-project] --version [my-new-version] --dry-run` to test the build.  Or remove the `--dry-run` to actually build the images locally.
 
+### Wrapping source code only repositories
+*Or external code repositories
+
+There my be instances where you just want to wrap a repositories source code into a lightweight image so it can be used as a cork-build dependency in another project. This can be accomplished by adding a `type: "source-wrapper"` to the repository definition file.  There is no need to have a Dockerfile in the repository, as cork-build will auto generate a file that looks like: 
+
+```Dockerfile
+FROM alpine:latest
+
+RUN mkdir /src
+WORKDIR /src
+COPY . /src
+```
+
+with the sample repository definition file looking like:
+
+```json
+{
+  "repository": "https://github.com/ucd-library/my-nodejs-src",
+
+  "dependencies": {},
+
+  "type" : "source-wrapper",
+  "registry" : "us-west1-docker.pkg.dev/digital-ucdavis-edu/pub",
+
+  "builds": {
+    "1.0.0" : {}
+  }
+}
+```
+
+This will generate an image for the source code named: `us-west1-docker.pkg.dev/digital-ucdavis-edu/pub/my-nodejs-src:1.0.0`
+
+Finally, in your main projects docker file you can do the following:
+
+```Dockerfile
+ARG NODELIB_SRC_IMAGE
+FROM ${NODELIB_SRC_IMAGE} as nodelib-src
+
+FROM node:22
+
+COPY --from=nodelib-src /src /ext-nodelib-src
+RUN cd /ext-nodelib-src && npm install
+# If you want to access it globally
+# RUN npm install -g /ext-nodelib-src 
+
+# ... now install your app code
+```
+
 ## Cork Build (.cork-build) Configuration File
 
 The `cork-build` configuration file is a JSON file that defines how to build the project.  The file should be in the root of the project repository (not this cork-build-registry).  The file contains the following fields:
