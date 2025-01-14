@@ -50,6 +50,10 @@
     "2.3.10" : {
       "fin" : "2.9.2",
       "media-utils" : "main"
+    },
+    "2.3.11" : {
+      "fin" : "2.9.2",
+      "media-utils" : "main"
     }
   }
 }
