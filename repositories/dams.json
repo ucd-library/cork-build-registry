@@ -66,6 +66,10 @@
     "2.3.14" : {
       "fin" : "2.9.3",
       "media-utils" : "main"
+    },
+    "2.3.15" : {
+      "fin" : "2.9.4",
+      "media-utils" : "main"
     }
   }
 }
