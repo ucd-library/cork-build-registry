@@ -7,10 +7,10 @@
 
 
   "builds": {
-    "main" : {
+    "0.2.0" : {
       "postgres" : "16"
     },
-    "sandbox" : {
+    "main" : {
       "postgres" : "16"
     }
   }
