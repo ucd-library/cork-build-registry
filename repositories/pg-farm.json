@@ -1,8 +1,17 @@
 {
   "repository": "https://github.com/ucd-library/pg-farm",
 
+  "dependencies": {
+    "postgres": "https://github.com/ucd-library/postgres"
+  },
+
+
   "builds": {
-    "main" : {},
-    "sandbox" : {}
+    "main" : {
+      "postgres" : "16"
+    },
+    "sandbox" : {
+      "postgres" : "16"
+    }
   }
 }
