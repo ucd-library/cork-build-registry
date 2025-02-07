@@ -2,11 +2,12 @@ steps:
 
   - name: us-west1-docker.pkg.dev/digital-ucdavis-edu/pub/cork-build-n-deploy:main
     entrypoint: "bash"
-    args: ["-c", "cork-kube build exec --production -p ${_PROJECT} -v ${_VERSION}"]
+    args: ["-c", "cork-kube build exec --production -p ${_PROJECT} -v ${_VERSION} --depth ${_DEPTH}"]
     env: 
       - '_CONFIG_BUCKET=$_CONFIG_BUCKET'
       - '_PROJECT=$_PROJECT'
       - '_VERSION=$_VERSION'
+      - '_DEPTH=$_DEPTH'
       - 'CORK_BUILD_REGISTRY=$_REGISTRY'
       - 'CORK_BUILD_USE_CACHE=$_USE_CACHE'
 
@@ -15,6 +16,7 @@ substitutions:
   _PROJECT: ''
   _VERSION: ''
   _REGISTRY: ''
+  _DEPTH: ''
   _USE_CACHE: 'true'
 
 options:
