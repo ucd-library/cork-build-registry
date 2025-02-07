@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/main-wp-website",
+
+  "dependencies": {
+    "ucdlib-wp-plugins": "https://github.com/UCDavisLibrary/ucdlib-wp-plugins",
+    "ucdlib-theme-wp": "https://github.com/UCDavisLibrary/ucdlib-theme-wp"
+  },
+
+  "secrets" : [{
+    "project" : "digital-ucdavis-edu",
+    "name" : "main-website-content-reader-key"
+  }],
+
+  "builds" : {
+    "v4.0.1" : {
+      "ucdlib-wp-plugins" : "v4.0.0",
+      "ucdlib-theme-wp" : "v4.0.0",
+      "secret.main-website-content-reader-key" : "latest"
+    }
+  }
+}

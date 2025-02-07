@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/ucdlib-wp-plugins",
+
+  "dependencies": {},
+
+  "type" : "source-wrapper",
+  "registry" : "us-west1-docker.pkg.dev/digital-ucdavis-edu/website",
+
+  "builds" : {
+    "v4.0.0" : {}
+  }
+}
