@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/libguides-indexer",
+
+  "dependencies": {},
+
+  "builds" : {
+    "main" : {},
+    "dev" : {}
+  }
+}
