@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/gcs-fuse",
+
+  "dependencies": {},
+
+  "builds" : {
+    "main" : {}
+  }
+}
