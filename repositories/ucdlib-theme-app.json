@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/ucdlib-theme",
+
+  "dependencies": {},
+
+  "builds": {
+    "main" : {}
+  }
+}
