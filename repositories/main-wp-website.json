@@ -21,6 +21,16 @@
       "ucdlib-wp-plugins" : "v4.0.0",
       "ucdlib-theme-wp" : "v4.0.0",
       "secret.main-website-content-reader-key" : "latest"
+    },
+    "sandbox" : {
+      "ucdlib-wp-plugins" : "sandbox",
+      "ucdlib-theme-wp" : "sandbox",
+      "secret.main-website-content-reader-key" : "latest"
+    },
+    "stage" : {
+      "ucdlib-wp-plugins" : "stage",
+      "ucdlib-theme-wp" : "stage",
+      "secret.main-website-content-reader-key" : "latest"
     }
   }
 }
