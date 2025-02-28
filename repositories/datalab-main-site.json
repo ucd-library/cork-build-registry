@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/datalab-main-site.git",
+
+  "dependencies": {
+    "ucdlib-theme-wp": "https://github.com/UCDavisLibrary/ucdlib-theme-wp"
+  },
+
+  "secrets" : [{
+    "project" : "digital-ucdavis-edu",
+    "name" : "datalab-main-site-reader"
+  }],
+
+  "builds" : {
+    "stage" : {
+      "ucdlib-theme-wp" : "v4.0.0",
+      "secret.datalab-main-site-reader" : "latest"
+    }
+  }
+}
