@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/ucdlib-awards.git",
+
+  "secrets" : [{
+    "project" : "digital-ucdavis-edu",
+    "name" : "itis-backup-reader-key"
+  }],
+
+  "builds" : {
+    "sandbox" : {
+      "secret.itis-backup-reader-key" : "latest"
+    }
+  }
+}
