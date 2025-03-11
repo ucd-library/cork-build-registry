@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/ucdlib-iam-support.git",
+  "builds" : {
+    "sandbox" : {}
+  }
+}
