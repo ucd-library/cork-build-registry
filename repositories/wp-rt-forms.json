@@ -1,5 +1,5 @@
 {
-  "repository": "https://github.com/UCDavisLibrary/ucdlib-awards.git",
+  "repository": "https://github.com/UCDavisLibrary/wp-rt-forms.git",
 
   "secrets" : [{
     "project" : "digital-ucdavis-edu",
@@ -7,7 +7,7 @@
   }],
 
   "builds" : {
-    "v1.2.0" : {
+    "v1.5.0" : {
       "secret.itis-backup-reader-key" : "latest"
     },
     "sandbox" : {
