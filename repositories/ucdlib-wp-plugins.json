@@ -7,6 +7,7 @@
   "registry" : "us-west1-docker.pkg.dev/digital-ucdavis-edu/website",
 
   "builds" : {
+    "v4.1.0" : {},
     "v4.0.0" : {},
     "sandbox" : {},
     "stage" : {}

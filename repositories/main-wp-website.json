@@ -12,13 +12,8 @@
   }],
 
   "builds" : {
-    "cork-kube-build" : {
-      "ucdlib-wp-plugins" : "v4.0.0",
-      "ucdlib-theme-wp" : "v4.0.0",
-      "secret.main-website-content-reader-key" : "latest"
-    },
-    "v4.0.1" : {
-      "ucdlib-wp-plugins" : "v4.0.0",
+    "v4.1.0" : {
+      "ucdlib-wp-plugins" : "v4.1.0",
       "ucdlib-theme-wp" : "v4.0.0",
       "secret.main-website-content-reader-key" : "latest"
     },
