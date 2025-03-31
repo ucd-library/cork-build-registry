@@ -11,6 +11,10 @@
       "fin" : "sandbox",
       "media-utils" : "main"
     },
+    "2.4.24" : {
+      "fin" : "2.11.8",
+      "media-utils" : "main"
+    },
     "2.4.23" : {
       "fin" : "2.11.8",
       "media-utils" : "main"
