@@ -2,6 +2,8 @@
   "repository": "https://github.com/ucd-library/ucdlib-media-utils",
 
   "builds": {
-    "main" : {}
+    "main" : {},
+    "1.1.0" : {},
+    "1.0.0" : {}
   }
 }
