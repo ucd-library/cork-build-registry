@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/ucdlib-intranet.git",
+
+  "dependencies": {
+    "ucdlib-theme-wp": "https://github.com/UCDavisLibrary/ucdlib-theme-wp"
+  },
+
+  "secrets" : [{
+    "project" : "digital-ucdavis-edu",
+    "name" : "itis-backup-reader-key"
+  }],
+
+  "builds" : {
+    "dev" : {
+      "ucdlib-theme-wp" : "v4.0.0",
+      "secret.itis-backup-reader-key" : "latest"
+    }
+  }
+}
