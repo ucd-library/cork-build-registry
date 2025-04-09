@@ -3,7 +3,7 @@
 
   "dependencies": {
     "ucdlib-theme-wp": "https://github.com/UCDavisLibrary/ucdlib-theme-wp",
-    "gmail-wp-pipeline": "https://github.com/UCDavisLibrary/gmail-wp-pipeline.git"
+    "gmail-wp-pipeline": "https://github.com/UCDavisLibrary/gmail-wp-pipeline"
   },
 
   "secrets" : [{
