@@ -13,7 +13,7 @@
 
   "builds" : {
     "dev" : {
-      "ucdlib-theme-wp" : "v4.0.0",
+      "ucdlib-theme-wp" : "intranet",
       "gmail-wp-pipeline" : "dev",
       "secret.itis-backup-reader-key" : "latest"
     }
