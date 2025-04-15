@@ -11,9 +11,9 @@
       "fin" : "sandbox",
       "media-utils" : "main"
     },
-    "jm-image-workflow-v2" : {
+    "2.5.0" : {
       "fin" : "2.11.10",
-      "media-utils" : "main"
+      "media-utils" : "1.0.0"
     },
     "2.4.26" : {
       "fin" : "2.11.10",
