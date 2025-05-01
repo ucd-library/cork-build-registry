@@ -9,6 +9,7 @@
   "builds" : {
     "v4.0.0" : {},
     "sandbox" : {},
-    "stage" : {}
+    "stage" : {},
+    "intranet" : {}
   }
 }
