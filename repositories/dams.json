@@ -11,7 +11,7 @@
       "fin" : "sandbox",
       "media-utils" : "main"
     },
-    "2.6.0" : {
+    "2.6.1" : {
       "fin" : "2.12.0",
       "media-utils" : "1.0.0"
     },
