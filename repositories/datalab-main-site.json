@@ -16,7 +16,7 @@
       "secret.datalab-main-site-reader" : "latest"
     },
     "stage" : {
-      "ucdlib-theme-wp" : "v4.0.0",
+      "ucdlib-theme-wp" : "v4.1.0",
       "secret.datalab-main-site-reader" : "latest"
     }
   }
