@@ -11,8 +11,8 @@
   }],
 
   "builds" : {
-    "v1.1.0" : {
-      "ucdlib-theme-wp" : "v4.0.0",
+    "v1.2.0" : {
+      "ucdlib-theme-wp" : "v4.1.0",
       "secret.datalab-main-site-reader" : "latest"
     },
     "stage" : {
