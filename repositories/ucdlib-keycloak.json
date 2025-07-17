@@ -1,5 +1,5 @@
 {
-  "repository": "https://github.com/UCDavisLibrary/keycloak-deployment.git",
+  "repository": "https://github.com/UCDavisLibrary/ucdlib-keycloak.git",
   "builds" : {
     "cork-build" : {}
   }
