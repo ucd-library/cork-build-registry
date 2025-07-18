@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/UCDavisLibrary/ucdlib-keycloak.git",
   "builds" : {
-    "cork-build" : {}
+    "sandbox" : {}
   }
 }
