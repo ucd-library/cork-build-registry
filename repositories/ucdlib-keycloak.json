@@ -1,6 +1,7 @@
 {
   "repository": "https://github.com/UCDavisLibrary/ucdlib-keycloak.git",
   "builds" : {
-    "sandbox" : {}
+    "sandbox" : {},
+    "v1.1.0" : {}
   }
 }
