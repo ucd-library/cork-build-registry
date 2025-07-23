@@ -3,10 +3,14 @@
 
   "dependencies": {
     "fuseki":"https://github.com/ucd-library/fuseki-image",
-    "fin": "https://github.com/ucd-library/fin"
+    "fin": "https://github.com/ucd-library/fin",
+    "project-anduin" : "https://github.com/ucd-library/project-anduin"
   },
 
   "builds": {
+    "anduin-node-etl" : {
+      "project-anduin" : "main"
+    },
     "dev" : {
       "fuseki":"2.0.0",
       "fin":"2.11.10"
