@@ -7,10 +7,10 @@
   }],
 
   "builds" : {
-    "v1.3.0" : {
+    "v1.4.0" : {
       "secret.itis-backup-reader-key" : "latest"
     },
-    "v1.2.0" : {
+    "v1.3.0" : {
       "secret.itis-backup-reader-key" : "latest"
     },
     "sandbox" : {
