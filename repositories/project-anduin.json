@@ -1,7 +1,13 @@
 {
   "repository": "https://github.com/ucd-library/project-anduin",
 
+  "dependencies": {
+    "postgres": "https://github.com/ucd-library/postgres"
+  },
+
   "builds": {
-    "main" : {}
+    "main" : {
+      "postgres" : "16"
+    }
   }
 }
