@@ -11,7 +11,7 @@
   }],
 
   "builds" : {
-    "v1.3.0" : {
+    "v1.3.1" : {
       "ucdlib-theme-wp" : "v4.1.0",
       "secret.datalab-main-site-reader" : "latest"
     },
