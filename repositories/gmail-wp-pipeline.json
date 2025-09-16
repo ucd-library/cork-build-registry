@@ -1,6 +1,7 @@
 {
   "repository": "https://github.com/UCDavisLibrary/gmail-wp-pipeline.git",
   "builds" : {
+    "v1.0.0" : {},
     "dev" : {}
   }
 }
