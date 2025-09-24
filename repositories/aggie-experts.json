@@ -8,6 +8,9 @@
   },
 
   "builds": {
+    "anduin" : {
+      "project-anduin" : "main"
+    },
     "anduin-node-etl" : {
       "project-anduin" : "main"
     },
