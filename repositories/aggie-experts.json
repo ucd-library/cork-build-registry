@@ -8,10 +8,21 @@
   },
 
   "builds": {
+    "anduin" : {
+      "project-anduin" : "main"
+    },
     "anduin-node-etl" : {
       "project-anduin" : "main"
     },
     "dev" : {
+      "fuseki":"2.0.0",
+      "fin":"2.11.10"
+    },
+    "4.5.10" : {
+      "fuseki":"2.0.0",
+      "fin":"2.11.10"
+    },
+    "4.5.9" : {
       "fuseki":"2.0.0",
       "fin":"2.11.10"
     },

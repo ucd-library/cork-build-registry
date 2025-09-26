@@ -12,6 +12,11 @@
   }],
 
   "builds" : {
+    "v1.0.0" : {
+      "ucdlib-theme-wp" : "v4.2.0",
+      "gmail-wp-pipeline" : "v1.0.0",
+      "secret.itis-backup-reader-key" : "latest"
+    },
     "dev" : {
       "ucdlib-theme-wp" : "intranet",
       "gmail-wp-pipeline" : "dev",
