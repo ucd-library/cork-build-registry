@@ -4,15 +4,18 @@
   "dependencies": {
     "fuseki":"https://github.com/ucd-library/fuseki-image",
     "fin": "https://github.com/ucd-library/fin",
-    "project-anduin" : "https://github.com/ucd-library/project-anduin"
+    "project-anduin" : "https://github.com/ucd-library/project-anduin",
+    "caskfs" : "https://github.com/ucd-library/caskfs"
   },
 
   "builds": {
     "anduin" : {
-      "project-anduin" : "main"
+      "project-anduin" : "main",
+      "caskfs" : "main"
     },
     "anduin-node-etl" : {
-      "project-anduin" : "main"
+      "project-anduin" : "main",
+      "caskfs" : "main"
     },
     "dev" : {
       "fuseki":"2.0.0",
