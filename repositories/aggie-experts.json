@@ -17,11 +17,11 @@
       "project-anduin" : "main",
       "caskfs" : "main"
     },
-    "mg-finish-webapp-transform" : {
-      "project-anduin" : "main",
-      "caskfs" : "main"
-    },
     "dev" : {
+      "fuseki":"2.0.0",
+      "fin":"2.11.10"
+    },
+    "4.6.4" : {
       "fuseki":"2.0.0",
       "fin":"2.11.10"
     },
