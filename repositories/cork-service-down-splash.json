@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/ucd-library/cork-service-down-splash.git",
+  "builds" : {
+    "main" : {}
+  }
+}
