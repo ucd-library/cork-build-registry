@@ -2,7 +2,6 @@
   "repository": "https://github.com/UCDavisLibrary/ucdlib-iam-support.git",
   "builds" : {
     "v1.16.0" : {},
-    "main" : {},
-    "sandbox" : {}
+    "v2" : {}
   }
 }
