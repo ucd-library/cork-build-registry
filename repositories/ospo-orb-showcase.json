@@ -1,5 +1,5 @@
 {
-  "repository": "https://github.com/ucd-library/orb-showcase",
+  "repository": "https://github.com/UC-OSPO-Network/orb-showcase",
 
   "builds": {
     "master" : {}
