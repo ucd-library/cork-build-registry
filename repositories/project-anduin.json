@@ -6,6 +6,9 @@
   },
 
   "builds": {
+    "0.1.0" : {
+      "postgres" : "16"
+    },
     "main" : {
       "postgres" : "16"
     }

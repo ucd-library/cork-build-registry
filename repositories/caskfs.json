@@ -2,6 +2,7 @@
   "repository": "https://github.com/ucd-library/caskfs",
 
   "builds": {
-    "main" : {}
+    "main" : {},
+    "0.1.0" : {}
   }
 }

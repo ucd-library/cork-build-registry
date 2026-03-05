@@ -9,11 +9,11 @@
   },
 
   "builds": {
-    "anduin" : {
-      "project-anduin" : "main",
-      "caskfs" : "main"
+    "5.0.0-rc.1" : {
+      "project-anduin" : "0.1.0",
+      "caskfs" : "0.1.0"
     },
-    "anduin-node-etl" : {
+    "anduin" : {
       "project-anduin" : "main",
       "caskfs" : "main"
     },
