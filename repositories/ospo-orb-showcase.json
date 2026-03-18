@@ -2,6 +2,7 @@
   "repository": "https://github.com/UC-OSPO-Network/orb-showcase",
 
   "builds": {
-    "master" : {}
+    "master" : {},
+    "dynamic-rendering" : {}
   }
 }
