@@ -12,9 +12,9 @@
   }],
 
   "builds" : {
-    "v4.5.0" : {
-      "ucdlib-wp-plugins" : "v4.5.0",
-      "ucdlib-theme-wp" : "v4.4.0",
+    "v4.6.0" : {
+      "ucdlib-wp-plugins" : "v4.6.0",
+      "ucdlib-theme-wp" : "v4.5.0",
       "secret.main-website-content-reader-key" : "latest"
     },
     "sandbox" : {
