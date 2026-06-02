@@ -12,8 +12,8 @@
   }],
 
   "builds" : {
-    "v1.3.0" : {
-      "ucdlib-theme-wp" : "v4.4.0",
+    "v1.4.0" : {
+      "ucdlib-theme-wp" : "v4.5.0",
       "gmail-wp-pipeline" : "v1.0.0",
       "secret.itis-backup-reader-key" : "latest"
     },
