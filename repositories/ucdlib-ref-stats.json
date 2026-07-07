@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/UCDavisLibrary/ucdlib-ref-stats",
+
+  "dependencies": {},
+
+  "builds": {
+    "main" : {}
+  }
+}
