@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/wine-prices-demo",
+
+  "dependencies": {},
+
+  "builds": {
+    "main" : {}
+  }
+}
