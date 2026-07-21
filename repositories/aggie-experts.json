@@ -9,6 +9,10 @@
   },
 
   "builds": {
+    "5.2.5" : {
+      "project-anduin" : "0.1.2",
+      "caskfs" : "0.2.1"
+    },
     "5.2.4" : {
       "project-anduin" : "0.1.2",
       "caskfs" : "0.2.1"
