@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/ucd-library/argonath",
+
+  "dependencies": {
+    "project-anduin" : "https://github.com/ucd-library/project-anduin",
+    "caskfs" : "https://github.com/ucd-library/caskfs"
+  },
+
+  "builds": {
+    "main" : {
+      "project-anduin" : "0.1.2",
+      "caskfs" : "0.2.1"
+    }
+  }
+}
