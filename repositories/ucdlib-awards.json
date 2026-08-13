@@ -7,7 +7,7 @@
   }],
 
   "builds" : {
-    "v1.7.1" : {
+    "v1.7.2" : {
       "secret.itis-backup-reader-key" : "latest"
     },
     "sandbox" : {
