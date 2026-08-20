@@ -7,7 +7,7 @@
   }],
 
   "builds" : {
-    "v1.7.2" : {
+    "v1.7.3" : {
       "secret.itis-backup-reader-key" : "latest"
     },
     "main" : {
