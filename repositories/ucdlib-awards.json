@@ -10,7 +10,7 @@
     "v1.7.2" : {
       "secret.itis-backup-reader-key" : "latest"
     },
-    "sandbox" : {
+    "main" : {
       "secret.itis-backup-reader-key" : "latest"
     }
   }
