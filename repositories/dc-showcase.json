@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/dc-showcase",
+
+  "dependencies": {},
+
+  "builds": {
+    "main" : {}
+  }
+}
