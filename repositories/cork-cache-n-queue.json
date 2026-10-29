@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/cork-cache-n-queue",
+
+  "dependencies": {},
+
+  "builds": {
+    "0.0.1" : {}
+  }
+}
