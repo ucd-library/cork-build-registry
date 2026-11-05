@@ -8,16 +8,31 @@ it, orders it so dependencies build before dependents, and (optionally) runs
 
 ## Version selection (per project)
 
-0. If the project's `repositories/<name>.json` has `"cicd": false` at its
-   root, it is never selected as a top-level build target - the dry-run
-   output still prints why. It can still end up in the plan anyway if some
-   other project's build pins a specific version of it as a dependency, since
-   that dependent genuinely needs that version to exist.
-1. Highest valid semver tag among that project's `builds` keys.
-2. Else `main`, if present.
-3. Else `dev`, if present.
-4. Else the project is skipped for this run (it may still be pulled in by
-   another project's dependency pin).
+Each project's `repositories/<name>.json` can carry a root `"cicd"` field
+that controls which version(s) of it are top-level build targets:
+
+- **Not set (default)**: standard precedence -
+  1. Highest valid semver tag among that project's `builds` keys (bare/partial
+     numeric tags like `"16"` or `"16.0"` count too, coerced to `16.0.0` for
+     comparison only - the real tag, e.g. `"16"`, is still what gets built).
+  2. Else `main`, if present.
+  3. Else `dev`, if present.
+  4. Else the project is skipped for this run (it may still be pulled in by
+     another project's dependency pin).
+- **`false`**: never a top-level build target. The dry-run output still
+  prints why.
+- **An ordered array of build keys**, e.g. `"cicd": ["2.16.0", "2.15.1",
+  "main"]`: exactly those versions are built, instead of the semver/main/dev
+  precedence above - useful for a project that needs more than one version
+  rebuilt nightly, or one that wants a version other than its latest tag kept
+  fresh. An empty array is skipped the same way `false` is, with its own
+  reason. A listed key with no matching `builds` entry is reported as a
+  registry error, same as a bad dependency version pin.
+
+Either way, `"cicd"` only controls *top-level* selection - if some other
+project's build pins a specific version of a `false` (or explicit-list)
+project as a dependency, that version still ends up in the plan, since the
+dependent genuinely needs it to exist.
 
 ## Usage
 

@@ -32,15 +32,22 @@ export function transitiveDependents({ startKeys, edges }) {
 }
 
 /**
- * Computes the full nightly build plan: loads the registry, selects a
- * top-level version per project (skipping any with `"cicd": false` at its
- * root), walks the dependency closure, excludes
- * anything unbuildable (registry errors or cycles) along with everything
- * that transitively depends on it, and topologically sorts what remains. A
- * `"cicd": false` project is only skipped as a *top-level* build target; if
- * some other project's build still pins a specific version of it as a
- * dependency, that version is still included in the plan, since the
- * dependent genuinely needs it to exist.
+ * Computes the full nightly build plan: loads the registry, selects which
+ * version(s) of each project to build this run, walks the dependency
+ * closure, excludes anything unbuildable (registry errors or cycles) along
+ * with everything that transitively depends on it, and topologically sorts
+ * what remains.
+ *
+ * Top-level selection is driven by each project's root `"cicd"` field:
+ *   - Not set: the usual precedence in version-selector.js - highest semver
+ *     tag, else `main`, else `dev`, else skipped.
+ *   - `false`: never a top-level build target.
+ *   - An array of build keys: exactly those versions are built, in the
+ *     order listed, instead of the semver/main/dev precedence.
+ * Either way, this only controls *top-level* selection - if some other
+ * project's build still pins a specific version of a `false` (or
+ * explicit-list) project as a dependency, that version is still included in
+ * the plan, since the dependent genuinely needs it to exist.
  *
  * @param {object} [opts={}]
  * @param {string} [opts.gitUrl] - Registry git URL (ignored if localPath is set).
@@ -83,13 +90,32 @@ export async function createPlan(opts = {}) {
       issues.push({ type: 'unknown-project', message: `Requested project "${name}" is not present in the registry` });
       continue;
     }
-    if (!project.cicd) {
+    if (project.cicd === false) {
       issues.push({
         type: 'cicd-disabled',
         message: `Skipping ${name}: "cicd": false is set in the registry (still built if another project pins a specific version of it as a dependency)`
       });
       continue;
     }
+
+    if (Array.isArray(project.cicd)) {
+      if (project.cicd.length === 0) {
+        issues.push({
+          type: 'cicd-empty-list',
+          message: `Skipping ${name}: "cicd" is an empty list in the registry`
+        });
+        continue;
+      }
+      for (const version of project.cicd) {
+        topLevelSelections.push({
+          project: name,
+          version,
+          reason: `top-level: explicitly listed in registry "cicd"`
+        });
+      }
+      continue;
+    }
+
     const selection = selectTopLevelVersion(project);
     if (!selection) {
       issues.push({

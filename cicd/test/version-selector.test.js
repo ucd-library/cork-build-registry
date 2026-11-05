@@ -40,11 +40,33 @@ test('returns null when nothing qualifies', () => {
   assert.equal(selection, null);
 });
 
-test('ignores bare major-version keys like "16" (not valid semver)', () => {
+test('treats a bare major-version key like "16" as 16.0.0', () => {
   const selection = selectTopLevelVersion({
     builds: { '16': {} }
   });
-  assert.equal(selection, null);
+  assert.equal(selection.version, '16');
+  assert.equal(selection.reason, 'top-level: highest semver tag');
+});
+
+test('treats a partial "16.0" key the same as "16"', () => {
+  const selection = selectTopLevelVersion({
+    builds: { '16.0': {} }
+  });
+  assert.equal(selection.version, '16.0');
+});
+
+test('picks the highest among a mix of bare, partial, and full version keys', () => {
+  const selection = selectTopLevelVersion({
+    builds: { '9': {}, '16': {}, '16.4': {}, 'main': {} }
+  });
+  assert.equal(selection.version, '16.4');
+});
+
+test('still ignores non-numeric branch keys even when they contain digits', () => {
+  const selection = selectTopLevelVersion({
+    builds: { 'feature-123': {}, 'main': {} }
+  });
+  assert.equal(selection.version, 'main');
 });
 
 test('prefers semver over dev when both exist', () => {

@@ -31,11 +31,12 @@ export async function cloneRegistry({ gitUrl, ref }) {
  *   directory containing a `repositories` subfolder in the same shape).
  * @returns {Promise<{registry: Map<string, object>, loadErrors: object[]}>}
  *   `registry` is keyed by each project's derived short name (from its
- *   `repository` URL, not its filename). Each entry's `cicd` is `false` only
- *   when the file explicitly sets `"cicd": false` at its root - see
- *   version-selector.js/build-planner.js for what that excludes. `loadErrors`
- *   lists any file that failed to parse, so one bad file doesn't abort the
- *   whole run.
+ *   `repository` URL, not its filename). Each entry's `cicd` is passed
+ *   through as-is from the file's root `"cicd"` field - `undefined` (not
+ *   set), `false`, or an ordered array of build keys - see build-planner.js
+ *   for what each of those means for top-level selection. `loadErrors` lists
+ *   any file that failed to parse, so one bad file doesn't abort the whole
+ *   run.
  */
 export async function loadRegistryFromDir(dir) {
   const repositoriesDir = path.join(dir, 'repositories');
@@ -61,7 +62,7 @@ export async function loadRegistryFromDir(dir) {
       registry.set(name, {
         name,
         repository: parsed.repository,
-        cicd: parsed.cicd !== false,
+        cicd: parsed.cicd,
         dependencies: parsed.dependencies || {},
         builds: parsed.builds || {}
       });

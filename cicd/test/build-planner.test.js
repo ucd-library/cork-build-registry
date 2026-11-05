@@ -48,6 +48,29 @@ test('still builds a "cicd": false project when another project pins it as a dep
   assert.equal(byProject.epsilon, '1.0.0');
 });
 
+test('builds exactly the versions listed in an explicit "cicd" array, ignoring semver precedence', async () => {
+  const { plan } = await createPlan({ localPath: fixturesDir, projectFilter: ['zeta'] });
+  const versions = plan.filter(e => e.project === 'zeta').map(e => e.version);
+
+  assert.deepEqual(new Set(versions), new Set(['1.0.0', '1.1.0', 'main']));
+  assert.ok(!versions.includes('1.2.0'), 'highest semver tag should be skipped since it is not in the "cicd" list');
+});
+
+test('skips a project with an empty "cicd" list and reports why', async () => {
+  const { plan, issues } = await createPlan({ localPath: fixturesDir, projectFilter: ['eta'] });
+
+  assert.equal(plan.length, 0);
+  assert.ok(issues.some(i => i.type === 'cicd-empty-list'));
+});
+
+test('reports an unknown-version issue for a "cicd" entry with no matching build', async () => {
+  const { plan, issues } = await createPlan({ localPath: fixturesDir, projectFilter: ['theta'] });
+  const versions = plan.filter(e => e.project === 'theta').map(e => e.version);
+
+  assert.deepEqual(versions, ['1.0.0']);
+  assert.ok(issues.some(i => i.type === 'unknown-version' && i.message.includes('theta') && i.message.includes('9.9.9')));
+});
+
 test('excludes nodes with registry errors and reports the cascading skip', async () => {
   const { plan, issues } = await createPlan({ localPath: fixturesDir, projectFilter: ['missing-version-pin'] });
 

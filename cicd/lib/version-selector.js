@@ -1,5 +1,5 @@
 import semver from 'semver';
-import { isValidSemver } from './util.js';
+import { isValidSemver, normalizeVersionKey } from './util.js';
 
 /**
  * Selects which build of a project should be built this run, following
@@ -16,7 +16,7 @@ export function selectTopLevelVersion(project) {
   const semverKeys = keys.filter(isValidSemver);
   if (semverKeys.length > 0) {
     const highest = semverKeys.reduce((best, key) =>
-      semver.rcompare(semver.valid(key), semver.valid(best)) < 0 ? key : best
+      semver.rcompare(normalizeVersionKey(key), normalizeVersionKey(best)) < 0 ? key : best
     );
     return { version: highest, reason: 'top-level: highest semver tag' };
   }

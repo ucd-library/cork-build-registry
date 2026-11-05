@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/ucd-library/theta",
+  "cicd": ["1.0.0", "9.9.9"],
+  "builds": {
+    "1.0.0": {}
+  }
+}
