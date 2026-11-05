@@ -10,6 +10,7 @@ steps:
       - '_DEPTH=$_DEPTH'
       - 'CORK_BUILD_REGISTRY=$_REGISTRY'
       - 'CORK_BUILD_USE_CACHE=$_USE_CACHE'
+      - 'CORK_BUILD_NOTIFY=$_NOTIFY'
 
 substitutions:
   _CONFIG_BUCKET: ci-build-config
@@ -18,5 +19,6 @@ substitutions:
   _REGISTRY: ''
   _DEPTH: ''
   _USE_CACHE: 'true'
+  _NOTIFY: 'error'
 
 timeout: 6400s

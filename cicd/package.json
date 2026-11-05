@@ -1,0 +1,22 @@
+{
+  "name": "cork-build-registry-cicd",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Nightly dependency-aware build orchestrator for cork-build-registry",
+  "main": "bin/cork-build-nightly.js",
+  "bin": {
+    "cork-build-nightly": "bin/cork-build-nightly.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node bin/cork-build-nightly.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "semver": "^7.6.3"
+  }
+}

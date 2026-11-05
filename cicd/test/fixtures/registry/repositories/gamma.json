@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/ucd-library/gamma",
+  "dependencies": {},
+  "builds": {
+    "dev": {},
+    "sandbox": {}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/ucd-library/epsilon",
+  "dependencies": {
+    "disabled": "https://github.com/ucd-library/cicd-disabled"
+  },
+  "builds": {
+    "1.0.0": {
+      "disabled": "1.0.0"
+    }
+  }
+}

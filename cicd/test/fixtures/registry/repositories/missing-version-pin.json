@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/missing-version-pin",
+  "dependencies": {
+    "no-deps": "https://github.com/ucd-library/no-deps"
+  },
+  "builds": {
+    "1.0.0": { "no-deps": "9.9.9" }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/ucd-library/no-deps",
+  "builds": {
+    "1.0.0": {}
+  }
+}

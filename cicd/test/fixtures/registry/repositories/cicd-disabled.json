@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/ucd-library/cicd-disabled",
+  "cicd": false,
+  "builds": {
+    "1.0.0": {}
+  }
+}

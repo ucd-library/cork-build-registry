@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ucd-library/cycle-b",
+  "dependencies": {
+    "cycle-a": "https://github.com/ucd-library/cycle-a"
+  },
+  "builds": {
+    "main": { "cycle-a": "main" }
+  }
+}

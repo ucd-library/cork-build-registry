@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/ucd-library/alpha",
+  "dependencies": {
+    "delta": "https://github.com/ucd-library/delta"
+  },
+  "builds": {
+    "1.2.0": { "delta": "1.0.0" },
+    "1.1.0": { "delta": "1.0.0" },
+    "main": { "delta": "1.0.0" }
+  }
+}

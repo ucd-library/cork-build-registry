@@ -7,6 +7,9 @@
     },
     "cork-build-registry-webapp" : {
       "contextPath" : "webapp"
+    },
+    "cork-build-registry-cicd" : {
+      "contextPath" : "cicd"
     }
   }
 }

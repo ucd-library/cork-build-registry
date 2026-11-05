@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/ucd-library/delta",
+  "dependencies": {
+    "no-deps": "https://github.com/ucd-library/no-deps"
+  },
+  "secrets": [{ "project": "digital-ucdavis-edu", "name": "delta-secret" }],
+  "builds": {
+    "1.0.0": {
+      "no-deps": "1.0.0",
+      "secret.delta-secret": "latest"
+    },
+    "0.9.0": {
+      "no-deps": "1.0.0"
+    }
+  }
+}

@@ -2,6 +2,7 @@
   "repository": "https://github.com/ucd-library/gcs-fuse",
 
   "dependencies": {},
+  "cicd" : false,
 
   "builds" : {
     "main" : {}
