@@ -44,7 +44,7 @@ gcloud iam service-accounts create "${SCHEDULER_SA_NAME}" \
 # --- Step 1: build and push the cork-build-registry-cicd image --------------
 # Run from the repo root, not from cicd/ - cork-kube resolves the image's
 # context/build config from the root .cork-build file.
-(cd "$(dirname "${BASH_SOURCE[0]}")/.." && cork-kube build gcb --project cork-build-registry --version main --no-cache)
+(cd "$(dirname "${BASH_SOURCE[0]}")/.." && cork-kube build gcb --project cork-build-registry --version main)
 
 # --- Step 2: create/update the Cloud Run Job ---------------------------------
 gcloud run jobs deploy "${JOB_NAME}" \
