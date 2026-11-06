@@ -167,7 +167,7 @@ endpoint for this one job. It needs exactly:
 | `roles/run.invoker`, scoped to the `cork-build-registry-nightly` Cloud Run Job only (not project-wide) | Lets Cloud Scheduler start an execution of this specific job and nothing else |
 
 Create it and grant the role (the job must already exist - this comes after
-Step 1 in `deploy.sh`):
+Step 2 in `deploy.sh`):
 
 ```bash
 gcloud iam service-accounts create cork-build-nightly-scheduler \

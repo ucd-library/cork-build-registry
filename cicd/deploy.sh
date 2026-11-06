@@ -6,10 +6,9 @@
 # the TODO placeholders below with real values, and run each step yourself.
 #
 # Prerequisites:
-#   - The cork-build-registry-cicd image has already been built and pushed,
-#     e.g. by running (from the repo root):
-#       cork-kube build gcb --project cork-build-registry --version main --no-cache
 #   - You have gcloud authenticated against the target GCP project.
+#   - cork-kube is installed (Step 1 below uses it to build/push the image;
+#     run from the repo root).
 
 set -euo pipefail
 
@@ -42,7 +41,12 @@ gcloud iam service-accounts create "${SCHEDULER_SA_NAME}" \
   --project="${GCP_PROJECT_ID}" \
   --display-name="Cloud Scheduler invoker for cork-build-registry nightly job"
 
-# --- Step 1: create/update the Cloud Run Job ---------------------------------
+# --- Step 1: build and push the cork-build-registry-cicd image --------------
+# Run from the repo root, not from cicd/ - cork-kube resolves the image's
+# context/build config from the root .cork-build file.
+(cd "$(dirname "${BASH_SOURCE[0]}")/.." && cork-kube build gcb --project cork-build-registry --version main --no-cache)
+
+# --- Step 2: create/update the Cloud Run Job ---------------------------------
 gcloud run jobs deploy "${JOB_NAME}" \
   --image="${IMAGE}" \
   --region="${REGION}" \
@@ -54,20 +58,20 @@ gcloud run jobs deploy "${JOB_NAME}" \
   --memory=1Gi \
   --cpu=1
 
-# --- Step 2: runtime service account needs to submit Cloud Build jobs -------
+# --- Step 3: runtime service account needs to submit Cloud Build jobs -------
 # (cork-kube build gcb shells out to `gcloud builds submit`)
 gcloud projects add-iam-policy-binding "${GCP_PROJECT_ID}" \
   --member="serviceAccount:${RUNTIME_SERVICE_ACCOUNT}" \
   --role="roles/cloudbuild.builds.editor"
 
-# --- Step 3: allow the Scheduler's invoking identity to run this job --------
+# --- Step 4: allow the Scheduler's invoking identity to run this job --------
 gcloud run jobs add-iam-policy-binding "${JOB_NAME}" \
   --region="${REGION}" \
   --project="${GCP_PROJECT_ID}" \
   --member="serviceAccount:${SCHEDULER_INVOKER_SERVICE_ACCOUNT}" \
   --role="roles/run.invoker"
 
-# --- Step 4: nightly trigger -------------------------------------------------
+# --- Step 5: nightly trigger -------------------------------------------------
 gcloud scheduler jobs create http "${JOB_NAME}-trigger" \
   --project="${GCP_PROJECT_ID}" \
   --location="${REGION}" \

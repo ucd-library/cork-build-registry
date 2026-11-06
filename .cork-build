@@ -5,9 +5,6 @@
     "cork-build-n-deploy" : {
       "contextPath" : "gcloud"
     },
-    "cork-build-registry-webapp" : {
-      "contextPath" : "webapp"
-    },
     "cork-build-registry-cicd" : {
       "contextPath" : "cicd"
     }
