@@ -39,6 +39,6 @@ RUN apt-get update && \
     apt-get install -y \
     google-cloud-cli \
     kubectl \
-    google-cloud-sdk-gke-gcloud-auth-plugin \
+    google-cloud-cli-gke-gcloud-auth-plugin \
     docker-ce-cli \
     docker-buildx-plugin

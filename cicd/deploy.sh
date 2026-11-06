@@ -33,13 +33,15 @@ TASK_TIMEOUT="21600s"                        # TODO: tune after observing a real
 # --- Step 0: create the two service accounts (skip if they already exist) ---
 # See README.md "Service accounts" for what each one is for and why it needs
 # exactly these roles and no more.
-gcloud iam service-accounts create "${RUNTIME_SA_NAME}" \
-  --project="${GCP_PROJECT_ID}" \
-  --display-name="cork-build-registry nightly build runner"
+gcloud iam service-accounts describe "${RUNTIME_SERVICE_ACCOUNT}" --project="${GCP_PROJECT_ID}" >/dev/null 2>&1 || \
+  gcloud iam service-accounts create "${RUNTIME_SA_NAME}" \
+    --project="${GCP_PROJECT_ID}" \
+    --display-name="cork-build-registry nightly build runner"
 
-gcloud iam service-accounts create "${SCHEDULER_SA_NAME}" \
-  --project="${GCP_PROJECT_ID}" \
-  --display-name="Cloud Scheduler invoker for cork-build-registry nightly job"
+gcloud iam service-accounts describe "${SCHEDULER_INVOKER_SERVICE_ACCOUNT}" --project="${GCP_PROJECT_ID}" >/dev/null 2>&1 || \
+  gcloud iam service-accounts create "${SCHEDULER_SA_NAME}" \
+    --project="${GCP_PROJECT_ID}" \
+    --display-name="Cloud Scheduler invoker for cork-build-registry nightly job"
 
 # --- Step 1: build and push the cork-build-registry-cicd image --------------
 # Run from the repo root, not from cicd/ - cork-kube resolves the image's
