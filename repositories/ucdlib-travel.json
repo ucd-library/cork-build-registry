@@ -2,6 +2,6 @@
   "repository": "https://github.com/UCDavisLibrary/ucdlib-travel.git",
   "builds" : {
     "v1.3.0" : {},
-    "dev" : {}
+    "main" : {}
   }
 }
