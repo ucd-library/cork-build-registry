@@ -12,7 +12,7 @@
   }],
 
   "builds" : {
-    "v4.8.9" : {
+    "v4.8.10" : {
       "ucdlib-wp-plugins" : "v4.7.1",
       "ucdlib-theme-wp" : "v4.6.0",
       "secret.main-website-content-reader-key" : "latest"
